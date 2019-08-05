@@ -6,11 +6,14 @@ const ProductContext = React.createContext();
 
 class ProductProvider extends Component {
     state={
-        products:[],
-        detailProduc:detailProduct,
+        products: [],
+        detailProduc: detailProduct,
         cart: [],
-        modalOpen: true,
-        modalProduct:detailProduct,
+        modalOpen: false,
+        modalProduct: detailProduct,
+        cartSubTotal: 0,
+        cartTax: 0,
+        cartTotal: 0
     };
     componentDidMount() {
         this.setProducts();
@@ -57,12 +60,24 @@ class ProductProvider extends Component {
             return {modalProduct: product, modalOpen:true}
         })
     }
+
+    closeModal = () => {
+        this.setState(() => {
+            return { modalOpen: false }
+        })
+    }
+
+    increment = (id) => {
+        console.log('this is incrment')
+    }
     render() {
         return(
             <ProductContext.Provider value={{
         ...this.state,
         handleDetail: this.handleDetail,
-        addToCart: this.addToCart
+        addToCart: this.addToCart,
+        openModal: this.openModal,
+        closeModal: this.closeModal
             }}>
                 {this.props.children}
             </ProductContext.Provider>
