@@ -17,6 +17,7 @@ export default class Details extends Component {
                                 <div className="col-10 m-auto text-center text-slanted text-blue my-5">
                                     <h1>{title}</h1>
                                 </div>
+                                
                             </div>
                             {/* end title */}
                             {/* Product info */}
